@@ -32,3 +32,25 @@ main {
 .text-center {
     text-align: center;
 }
+
+#feedback {
+    width: 20%;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px auto;
+    color: white;
+}
+
+#feedback.correct {
+    background-color: #00CC3C;
+    display: block;
+}
+
+#feedback.incorrect {
+    background-color: #FF4A4A;
+    display: block;
+}
+
+#feedback.hide {
+    display: none;
+}
