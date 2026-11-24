@@ -1,10 +1,13 @@
 {% extends 'layout.html' %}
 {% block body %}
-
-    <h1>Random question</h1>
-    <p id="question"></p>
-    <input type="text" id="user-answer">
-    <button id="check">Check</button>
+    <main>
+        <div class="text-center">
+            <h1>Random question</h1>
+            <p id="question"></p>
+            <input autofocus type="text" id="user-answer">
+            <button class="btn" id="check" type="submit">Check</button>
+        </div>
+    </main>
     
     <script type='text/javascript' src='{{ url_for("static", filename="random_question.js") }}'></script>
 

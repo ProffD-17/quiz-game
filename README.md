@@ -13,5 +13,7 @@ Then next week I will learn how to use websockets by making it multiplayer in re
 - make logout system
 - make db for users
 - make register system
-- connect API
+
 - make template for showing flashcards
+- make score system
+- make category selection

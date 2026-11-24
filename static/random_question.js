@@ -16,6 +16,7 @@ async function get_question() {
 // display question
 async function display_question() {
     question = await get_question()
+    console.log(question)
     question_p.innerHTML = question['question']
 }
 display_question()
@@ -36,7 +37,6 @@ function incorrect_answer() {
 
 // check offical answer with answer user given when check button clicked
 check_answer.addEventListener('click', function () {
-    console.log(question)
     correct = false;
     // get users answer
     let user_answer = user_answer_input.value.toLowerCase();
