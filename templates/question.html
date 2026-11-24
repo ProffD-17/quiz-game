@@ -1,6 +1,9 @@
 {% extends 'layout.html' %}
 {% block body %}
 
-    <p>{{ question }}</p>
+    {% for question_info in questions %}
+        <p>{{ question_info['question'] }}</p>
+        <p>{{ question_info['answer'] }}</p>
+    {% endfor %}
 
 {% endblock %}
