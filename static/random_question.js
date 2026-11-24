@@ -10,10 +10,13 @@ async function get_question() {
     return question
 }
 
-let question = get_question()
-console.log(question)
-
-question_p.innerHTML = question['question']
+// display question
+async function display_question() {
+    let question = await get_question()
+    console.log(question)
+    question_p.innerHTML = question['question']
+}
+display_question()
 
 
 // signal to user they got the right answer
@@ -22,7 +25,7 @@ function correct_answer() {
 }
 
 // signal to user they got the wrong answer
-function correct_answer() {
+function incorrect_answer() {
     console.log('incorrect')
 }
 
