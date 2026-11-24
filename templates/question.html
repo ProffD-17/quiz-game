@@ -1,9 +1,11 @@
 {% extends 'layout.html' %}
 {% block body %}
 
-    {% for question_info in questions %}
-        <p>{{ question_info['question'] }}</p>
-        <p>{{ question_info['answer'] }}</p>
-    {% endfor %}
+    <h1>Random question</h1>
+    <p id="question"></p>
+    <input type="text" id="user-answer">
+    <button id="check">Check</button>
+    
+    <script type='text/javascript' src='{{ url_for("static", filename="random_question.js") }}'></script>
 
 {% endblock %}
