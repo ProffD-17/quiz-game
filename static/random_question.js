@@ -2,6 +2,9 @@ const question_p = document.querySelector('#question');
 const user_answer_input = document.querySelector('#user-answer');
 const check_answer = document.querySelector('#check');
 
+// make question global
+let question;
+
 // get a random question
 async function get_question() {
     let res = await fetch('https://anyguesser.com/api/v1/questions')
@@ -12,8 +15,7 @@ async function get_question() {
 
 // display question
 async function display_question() {
-    let question = await get_question()
-    console.log(question)
+    question = await get_question()
     question_p.innerHTML = question['question']
 }
 display_question()
@@ -29,7 +31,12 @@ function incorrect_answer() {
     console.log('incorrect')
 }
 
+
+
+
+// check offical answer with answer user given when check button clicked
 check_answer.addEventListener('click', function () {
+    console.log(question)
     correct = false;
     // get users answer
     let user_answer = user_answer_input.value.toLowerCase();
