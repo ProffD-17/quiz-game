@@ -15,13 +15,18 @@ const correct_answer_p = document.querySelector('#correct-answer');
 // next question button 
 const next_question_btn = document.querySelector('#next-question');
 
+// get difficulty from template
+console.log(difficulty)
+console.log(typeof(difficulty))
+
+
 // make question global
 let question;
 
 // display random question
 async function new_random_question() {
     // get random question
-    let res = await fetch('https://anyguesser.com/api/v1/questions');
+    let res = await fetch('https://anyguesser.com/api/v1/questions?difficulty=' + difficulty.toString());
     let response_json = await res.json();
     question = response_json['questions'][0];
     // display question

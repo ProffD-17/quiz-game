@@ -13,6 +13,11 @@
             <p id="correct-answer" class="hide"></p>
         </div>
     </main>
+
+    <!-- get data from form and pass it into js -->
+    <script>
+        const difficulty = {{ difficulty | tojson }};
+    </script>
     
     <script type='text/javascript' src='{{ url_for("static", filename="random_question.js") }}'></script>
 
