@@ -1,16 +1,23 @@
 {% extends 'layout.html' %}
 {% block body %}
     <main>
-        <div class="text-center">
-            <h1>Random question</h1>
-            <p id="category"></p>
-            <p id="subtopic"></p>
-            <p id="question"></p>
-            <input autofocus type="text" id="user-answer">
-            <button class="btn" id="check" type="submit">Check</button>
-            <button id="next-question" class="btn"></button>
-            <p id="feedback" class="hide"></p>
-            <p id="correct-answer" class="hide"></p>
+        <div class="text-center container">
+            <aside class="side">
+                <h2>Round info</h2>
+                <p>Difficulty: {{ difficulty }}</p>
+            </aside>
+            <div class="content">
+                <h2>Question</h2>
+                <p id="category"></p>
+                <p id="subtopic"></p>
+                <p id="question"></p>
+                <input autofocus type="text" id="user-answer" placeholder="Your answer">
+                <button class="btn" id="check" type="submit">Check</button>
+                <button id="next-question" class="btn"></button>
+                <p id="feedback" class="hide"></p>
+                <p id="correct-answer" class="hide"></p>
+            </div>
+            
         </div>
     </main>
 
