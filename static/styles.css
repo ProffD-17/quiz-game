@@ -54,3 +54,7 @@ main {
 #feedback.hide {
     display: none;
 }
+
+#question {
+    margin: 5px auto;
+}
