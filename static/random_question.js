@@ -2,6 +2,8 @@
 const question_p = document.querySelector('#question');
 // displays the category
 const category_p = document.querySelector('#category');
+// displays the subtopic
+const subtopic_p = document.querySelector('#subtopic')
 // users answer
 const user_answer_input = document.querySelector('#user-answer');
 // button for user to check thier answer
@@ -28,6 +30,10 @@ async function new_random_question() {
     let category = question['category']['name'];
     console.log(category)
     category_p.innerHTML = 'Category: ' + category;
+    // display subtopic
+    let subtopic = question['subtopic'];
+    console.log(subtopic)
+    subtopic_p.innerHTML = 'Subtopic: ' + subtopic;
     // hide feedback
     feedback.classList.add('hide');
     feedback.classList.remove('correct');
