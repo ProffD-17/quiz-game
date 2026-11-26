@@ -16,11 +16,14 @@ const correct_answer_p = document.querySelector('#correct-answer');
 const next_question_btn = document.querySelector('#next-question');
 // shows user their streak
 const streak_p = document.querySelector('#streak')
+// shows user their top streak
+const top_streak_p = document.querySelector('#top-streak')
 
 
 // global variables
 let question;
 let streak = 0;
+let top_streak = 0;
 
 
 // reset all the info on the flashcard
@@ -66,6 +69,10 @@ new_random_question()
 
 function update_streak() {
     streak_p.innerHTML = 'Streak: ' + streak.toString();
+    if (streak > top_streak) {
+        top_streak = streak;
+        top_streak_p.innerHTML = 'Top streak: ' + top_streak.toString()
+    }
     console.log('streak updated')
 }
 
@@ -76,7 +83,7 @@ function correct_answer() {
     feedback.classList.add('correct');
     feedback.innerHTML = 'Correct';
     // add 1 to streak
-    streak = streak + 1;
+    streak = streak + 1; // how does ++ work in this language?!
     console.log('incremented streak')
 }
 
