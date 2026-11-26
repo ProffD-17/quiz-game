@@ -1,3 +1,7 @@
+// get question
+import { question } from "./random_question.js";
+
+// users answer
 const user_answer_input = document.querySelector('#user-answer');
 // button for user to check thier answer
 const check_answer = document.querySelector('#check');
