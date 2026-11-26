@@ -23,4 +23,10 @@ def random_question():
     elif difficulty < 1:
         difficulty = 1
 
-    return render_template('question.html', difficulty=difficulty)
+    return render_template('random_question.html', difficulty=difficulty)
+
+
+@app.route('/question_by_group')
+def question_by_group():
+    group_name = request.args.get('group')
+    return render_template('question_by_group.html', group_name=group_name)

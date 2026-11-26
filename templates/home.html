@@ -7,7 +7,7 @@
         <form action="/random_question" method="get">
             <label for="difficulty">Difficulty(1-3)</label>
             <input type="number" max="3" min="1" name="difficulty" id="difficulty" value="1">
-            <button type="submit">Start quiz</button>
+            <button type="submit" class="btn">Start quiz</button>
         </form>
         <h2>Quiz by group</h2>
         <form action="/question_by_group" method="get">
@@ -15,6 +15,7 @@
             <select name="group" id="group">
                 <option value="">Loading groups</option>
             </select>
+            <button type="submit" class="btn">Start quiz</button>
         </form>
     </main>
 

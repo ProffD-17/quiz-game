@@ -1,0 +1,11 @@
+{% extends 'question.html' %}
+{% block scripts %}
+
+    <!-- get data from form and pass it into js -->
+    <script>
+        const difficulty = {{ difficulty | tojson }};
+    </script>
+    
+    <script type='text/javascript' src='{{ url_for("static", filename="random_question.js") }}'></script>
+
+{% endblock %}

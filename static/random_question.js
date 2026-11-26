@@ -5,25 +5,14 @@ const category_p = document.querySelector('#category');
 // displays the subtopic
 const subtopic_p = document.querySelector('#subtopic')
 // where the user inputs their answer
-const user_answer_input = document.querySelector('#user-answer');
-// button for user to check thier answer
-const check_answer = document.querySelector('#check');
-// tells the user if they got the question right or wrong
-const feedback = document.querySelector('#feedback');
-// tells the user the right answer once they have answered the question
-const correct_answer_p = document.querySelector('#correct-answer');
+
 // next question button 
 const next_question_btn = document.querySelector('#next-question');
-// shows user their streak
-const streak_p = document.querySelector('#streak')
-// shows user their top streak
-const top_streak_p = document.querySelector('#top-streak')
+
 
 
 // global variables
 let question;
-let streak = 0;
-let top_streak = 0;
 
 
 // reset all the info on the flashcard
@@ -67,80 +56,10 @@ async function new_random_question() {
 new_random_question()
 
 
-function update_streak() {
-    streak_p.innerHTML = 'Streak: ' + streak.toString();
-    if (streak > top_streak) {
-        top_streak = streak;
-        top_streak_p.innerHTML = 'Top streak: ' + top_streak.toString()
-    }
-    console.log('streak updated')
-}
 
 
-// signal to user they got the right answer
-function correct_answer() {
-    feedback.classList.remove('incorrect');
-    feedback.classList.add('correct');
-    feedback.innerHTML = 'Correct';
-    // add 1 to streak
-    streak = streak + 1; // how does ++ work in this language?!
-    console.log('incremented streak')
-}
-
-// signal to user they got the wrong answer
-function incorrect_answer() {
-    feedback.classList.remove('correct');
-    feedback.classList.add('incorrect');
-    feedback.innerHTML = 'Incorrect';
-    // reset streak
-    streak = 0;
-    console.log('reset streak')
-}
 
 
-// signal to the user if they got the answer right or wrong and what the right answer was
-function give_feedback(correct, answer) {
-    // show feedback element
-    feedback.classList.remove('hide');
-    // display correct answer
-    correct_answer_p.innerHTML = 'Correct answer: ' + answer;
-    correct_answer_p.classList.remove('hide');
-    if (correct) {
-        correct_answer();
-    } else {
-        incorrect_answer();
-    }
-    update_streak();
-}
-
-
-// check offical answer with answer user given when check button clicked
-check_answer.addEventListener('click', function () {
-    correct = false;
-    // get users answer
-    let user_answer = user_answer_input.value.toLowerCase();
-    // get official answer from question
-    let answer = question['answer'];
-    let answer_lowercase = question['answer'].toLowerCase();
-    // check users answer with offical answer and acceptible answers
-    if (user_answer != answer_lowercase) {
-        // also check acceptable_answers
-        let acceptible_answers = question['acceptable_answers'];
-        if (acceptible_answers.length > 0) {
-            for (let i = 0; i < acceptible_answers.length; i++) {
-                if (user_answer === acceptible_answers[i].toLowerCase()) {
-                    correct = true;
-                    break;
-                }
-            }
-        }
-    } else {
-        correct = true;
-    }
-    give_feedback(correct, answer)
-    // question has been answered so next button should say next
-    next_question_btn.innerHTML = 'Next';
-});
 
 
 // display a new question when user clicks next question button

@@ -1,0 +1,9 @@
+{% extends 'question.html' %}
+{% block scripts %}
+
+    <script>
+        const group_name = {{ group_name | tojson }};
+    </script>
+    <script type='text/javascript' src='{{ url_for("static", filename="question_by_group.js") }}'></script>
+
+{% endblock %}

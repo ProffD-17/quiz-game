@@ -23,11 +23,12 @@
         </div>
     </main>
 
-    <!-- get data from form and pass it into js -->
-    <script>
-        const difficulty = {{ difficulty | tojson }};
-    </script>
-    
-    <script type='text/javascript' src='{{ url_for("static", filename="random_question.js") }}'></script>
+    <!-- default scripts -->
+     <script type='text/javascript' src='{{ url_for("static", filename="marker.js") }}'></script>
+     <script type='text/javascript' src='{{ url_for("static", filename="streak.js") }}'></script>
+
+    {% block scripts %}
+    {% endblock %}
+
 
 {% endblock %}

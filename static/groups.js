@@ -10,13 +10,12 @@ async function get_groups() {
 async function display_groups() {
     let groups_html = '';
     groups = await get_groups();
+    console.log(groups)
     for (let i = 0; i < groups.length; i++) {
-        console.log(i)
         group = groups[i];
         group_name = group['name'];
         groups_html += `<option value="${group_name}">${group_name}</option>`;
     }
     group_select.innerHTML = groups_html;
-    console.log(groups_html);
 }
 display_groups();
