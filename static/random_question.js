@@ -4,7 +4,7 @@ const question_p = document.querySelector('#question');
 const category_p = document.querySelector('#category');
 // displays the subtopic
 const subtopic_p = document.querySelector('#subtopic')
-// users answer
+// where the user inputs their answer
 const user_answer_input = document.querySelector('#user-answer');
 // button for user to check thier answer
 const check_answer = document.querySelector('#check');
@@ -14,10 +14,14 @@ const feedback = document.querySelector('#feedback');
 const correct_answer_p = document.querySelector('#correct-answer');
 // next question button 
 const next_question_btn = document.querySelector('#next-question');
+// shows user their streak
+const streak_p = document.querySelector('#streak')
 
-// get difficulty from template
-console.log(difficulty)
-console.log(typeof(difficulty))
+
+// global variables
+let question;
+let streak = 0;
+
 
 // reset all the info on the flashcard
 function reset_flashcard() { 
@@ -33,11 +37,6 @@ function reset_flashcard() {
     user_answer_input.value = '';
     user_answer_input.innerHTML = '';
 }
-
-
-
-// make question global
-let question;
 
 
 // show question, question category and question subtopic on fashcard
@@ -60,8 +59,15 @@ async function new_random_question() {
     let response_json = await res.json();
     question = response_json['questions'][0];
     display_question_info(question)
+    console.log(question['answer']) // so I can cheat ... I mean debug
 }
 new_random_question()
+
+
+function update_streak() {
+    streak_p.innerHTML = 'Streak: ' + streak.toString();
+    console.log('streak updated')
+}
 
 
 // signal to user they got the right answer
@@ -69,6 +75,9 @@ function correct_answer() {
     feedback.classList.remove('incorrect');
     feedback.classList.add('correct');
     feedback.innerHTML = 'Correct';
+    // add 1 to streak
+    streak = streak + 1;
+    console.log('incremented streak')
 }
 
 // signal to user they got the wrong answer
@@ -76,6 +85,25 @@ function incorrect_answer() {
     feedback.classList.remove('correct');
     feedback.classList.add('incorrect');
     feedback.innerHTML = 'Incorrect';
+    // reset streak
+    streak = 0;
+    console.log('reset streak')
+}
+
+
+// signal to the user if they got the answer right or wrong and what the right answer was
+function give_feedback(correct, answer) {
+    // show feedback element
+    feedback.classList.remove('hide');
+    // display correct answer
+    correct_answer_p.innerHTML = 'Correct answer: ' + answer;
+    correct_answer_p.classList.remove('hide');
+    if (correct) {
+        correct_answer();
+    } else {
+        incorrect_answer();
+    }
+    update_streak();
 }
 
 
@@ -102,16 +130,7 @@ check_answer.addEventListener('click', function () {
     } else {
         correct = true;
     }
-    // give feedback
-    feedback.classList.remove('hide');
-    // display correct answer
-    correct_answer_p.innerHTML = 'Correct answer: ' + answer;
-    correct_answer_p.classList.remove('hide');
-    if (correct) {
-        correct_answer();
-    } else {
-        incorrect_answer();
-    }
+    give_feedback(correct, answer)
     // question has been answered so next button should say next
     next_question_btn.innerHTML = 'Next';
 });
