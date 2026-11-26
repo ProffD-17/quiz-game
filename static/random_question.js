@@ -19,26 +19,8 @@ const next_question_btn = document.querySelector('#next-question');
 console.log(difficulty)
 console.log(typeof(difficulty))
 
-
-// make question global
-let question;
-
-// display random question
-async function new_random_question() {
-    // get random question
-    let res = await fetch('https://anyguesser.com/api/v1/questions?difficulty=' + difficulty.toString());
-    let response_json = await res.json();
-    question = response_json['questions'][0];
-    // display question
-    question_p.innerHTML = question['question'];
-    // display category
-    let category = question['category']['name'];
-    console.log(category)
-    category_p.innerHTML = 'Category: ' + category;
-    // display subtopic
-    let subtopic = question['subtopic'];
-    console.log(subtopic)
-    subtopic_p.innerHTML = 'Subtopic: ' + subtopic;
+// reset all the info on the flashcard
+function reset_flashcard() { 
     // hide feedback
     feedback.classList.add('hide');
     feedback.classList.remove('correct');
@@ -50,8 +32,34 @@ async function new_random_question() {
     // clear users last answer
     user_answer_input.value = '';
     user_answer_input.innerHTML = '';
+}
 
-    console.log(question);
+
+
+// make question global
+let question;
+
+
+// show question, question category and question subtopic on fashcard
+function display_question_info(question) {
+    // display question
+    question_p.innerHTML = question['question'];
+    // display category
+    let category = question['category']['name'];
+    category_p.innerHTML = 'Category: ' + category;
+    // display subtopic
+    let subtopic = question['subtopic'];
+    subtopic_p.innerHTML = 'Subtopic: ' + subtopic;
+}
+
+// display random question
+async function new_random_question() {
+    reset_flashcard()
+    // get random question
+    let res = await fetch('https://anyguesser.com/api/v1/questions?difficulty=' + difficulty.toString());
+    let response_json = await res.json();
+    question = response_json['questions'][0];
+    display_question_info(question)
 }
 new_random_question()
 
