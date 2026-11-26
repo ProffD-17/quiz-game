@@ -63,6 +63,11 @@ main {
 .container {
     display: flex;
     flex-direction: row;
-    
+}
+
+.flashcard-sidebar {
+    margin-right: 5px;
+    padding-right: 5px;
+    border-right: 2px solid #3B3B3B;
 }
 

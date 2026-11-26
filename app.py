@@ -5,11 +5,15 @@ import requests # for connecting to api
 # configure app
 app = Flask(__name__)
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def index():
-    if request.method == 'GET':
-        return render_template('home.html')
-    difficulty = request.form.get('difficulty')
+    return render_template('home.html')
+
+
+# quiz of random questions of select difficulty
+@app.route('/random_question')
+def random_question():
+    difficulty = request.args.get('difficulty')
     if not difficulty:
         difficulty = 1
     else:
