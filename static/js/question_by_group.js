@@ -16,6 +16,8 @@ export async function new_group_question() {
     reset_flashcard();
     display_question_info(await get_question_by_category());
 }
+
+
 if (gamemode === 'group') {
     new_group_question();
 }

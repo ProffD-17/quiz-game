@@ -1,14 +1,16 @@
 // get question
 import { question } from "./status.js";
 
+import { reset_streak } from "./streak.js";
+import { increment_streak } from "./streak.js";
+
 
 // signal to user they got the right answer
 function correct_answer() {
     feedback.classList.remove('incorrect');
     feedback.classList.add('correct');
     feedback.innerHTML = 'Correct';
-    // add 1 to streak
-    streak = streak + 1; // how does ++ work in this language?!
+    increment_streak();
 }
 
 
@@ -17,8 +19,7 @@ function incorrect_answer() {
     feedback.classList.remove('correct');
     feedback.classList.add('incorrect');
     feedback.innerHTML = 'Incorrect';
-    // reset streak
-    streak = 0;
+    reset_streak();
 }
 
 
@@ -34,16 +35,22 @@ function give_feedback(correct, answer) {
     } else {
         incorrect_answer();
     }
-    update_streak();
 }
 
 
-// check offical answer with answer user given when check button clicked
-check_answer.addEventListener('click', function () {
-    let correct = false;
+export let correct;
+
+// check answer in answer box with correct and acceptible answers
+function check_answer() {
+    correct = false;
+    if (!question) {
+        return;
+    }
+    console.log('before checked  ', correct);
     // get users answer
     let user_answer = user_answer_input.value.toLowerCase();
     // get official answer from question
+    console.log('question:  ', question);
     let answer = question['answer'];
     let answer_lowercase = question['answer'].toLowerCase();
     // check users answer with offical answer and acceptible answers
@@ -57,6 +64,8 @@ check_answer.addEventListener('click', function () {
                     break;
                 }
             }
+        } else {
+            correct = false;
         }
     } else {
         correct = true;
@@ -64,4 +73,16 @@ check_answer.addEventListener('click', function () {
     give_feedback(correct, answer)
     // question has been answered so next button should say next
     next_question_btn.innerHTML = 'Next';
-});
+    console.log('after checked     ', correct)
+}
+
+// check offical answer with answer user given when check button clicked
+check_answer_btn.addEventListener('click', check_answer);
+
+export function check_for_skip() {
+    check_answer();
+    console.log('moving on   ', correct);
+    if (!correct) {
+        reset_streak();
+    }
+}

@@ -1,3 +1,5 @@
+import { check_for_skip } from "./marker.js";
+
 // show question, question category and question subtopic on fashcard
 export function display_question_info(question) {
     // display question
@@ -26,10 +28,13 @@ export function reset_flashcard() {
     user_answer_input.innerHTML = '';
 }
 
+
+
 import { new_random_question } from "./random_question.js";
 import { new_group_question } from "./question_by_group.js";
 // display a new question when user clicks next question button
 next_question_btn.addEventListener('click', () => {
+    check_for_skip();
     if (gamemode === 'random') {
         new_random_question();
     } else if (gamemode === 'group') {

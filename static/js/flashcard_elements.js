@@ -13,7 +13,7 @@ const user_answer_input = document.querySelector('#user-answer');
 // tells the user if they got the question right or wrong
 const feedback = document.querySelector('#feedback');
 // button for user to check thier answer
-const check_answer = document.querySelector('#check');
+const check_answer_btn = document.querySelector('#check');
 // shows user their streak
 const streak_p = document.querySelector('#streak');
 // shows user their top streak

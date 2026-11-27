@@ -7,6 +7,9 @@
                 <p>Difficulty: {{ difficulty }}</p>
                 <p id="streak">Streak: 0</p>
                 <p id="top-streak">Top streak: 0</p>
+                {% if group_name %}
+                    <p>Group: {{ group_name }}</p>
+                {% endif %}
             </aside>
             <div class="content">
                 <h2>Question</h2>
@@ -22,14 +25,13 @@
             
         </div>
     </main>
+    
+    {% block scripts %}
+    {% endblock %}
 
     <!-- default scripts -->
      <script type='text/javascript' src='{{ url_for("static", filename="js/flashcard_elements.js") }}'></script>
      <script type='module' src='{{ url_for("static", filename="js/marker.js") }}'></script>
-     <script type='text/javascript' src='{{ url_for("static", filename="js/streak.js") }}'></script>
-
-    {% block scripts %}
-    {% endblock %}
-
+     <script type='module' src='{{ url_for("static", filename="js/streak.js") }}'></script>
 
 {% endblock %}
