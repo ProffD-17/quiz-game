@@ -1,6 +1,5 @@
 // get question
-import { question } from "./random_question.js";
-
+import { question } from "./status.js";
 
 
 // signal to user they got the right answer
@@ -11,6 +10,7 @@ function correct_answer() {
     // add 1 to streak
     streak = streak + 1; // how does ++ work in this language?!
 }
+
 
 // signal to user they got the wrong answer
 function incorrect_answer() {
@@ -40,7 +40,7 @@ function give_feedback(correct, answer) {
 
 // check offical answer with answer user given when check button clicked
 check_answer.addEventListener('click', function () {
-    correct = false;
+    let correct = false;
     // get users answer
     let user_answer = user_answer_input.value.toLowerCase();
     // get official answer from question

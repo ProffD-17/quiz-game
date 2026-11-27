@@ -4,8 +4,9 @@
     <!-- get data from form and pass it into js -->
     <script>
         const difficulty = {{ difficulty | tojson }};
+        const gamemode = 'random';
     </script>
     
-    <script type='module' src='{{ url_for("static", filename="random_question.js") }}'></script>
+    <script type='module' src='{{ url_for("static", filename="js/random_question.js") }}'></script>
 
 {% endblock %}
