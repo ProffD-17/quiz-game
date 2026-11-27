@@ -2,8 +2,6 @@
 import { display_question_info, reset_flashcard } from "./helpers.js";
 
 
-// next question button 
-const next_question_btn = document.querySelector('#next-question');
 
 
 // global variables

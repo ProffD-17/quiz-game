@@ -1,7 +1,5 @@
-// shows user their streak
-const streak_p = document.querySelector('#streak')
-// shows user their top streak
-const top_streak_p = document.querySelector('#top-streak')
+
+
 
 // global variables
 let streak = 0;

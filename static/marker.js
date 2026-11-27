@@ -1,14 +1,6 @@
 // get question
 import { question } from "./random_question.js";
 
-// users answer
-const user_answer_input = document.querySelector('#user-answer');
-// button for user to check thier answer
-const check_answer = document.querySelector('#check');
-// tells the user if they got the question right or wrong
-const feedback = document.querySelector('#feedback');
-// tells the user the right answer once they have answered the question
-const correct_answer_p = document.querySelector('#correct-answer');
 
 
 // signal to user they got the right answer
