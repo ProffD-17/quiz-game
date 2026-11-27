@@ -1,4 +1,5 @@
 import { display_question_info } from "./helpers.js";
+import { reset_flashcard } from "./helpers.js";
 // get the question variable
 import { question } from "./status.js";
 import { update_question } from "./status.js";
@@ -12,6 +13,7 @@ async function get_question_by_category() {
 }
 
 export async function new_group_question() {
+    reset_flashcard();
     display_question_info(await get_question_by_category());
 }
 if (gamemode === 'group') {

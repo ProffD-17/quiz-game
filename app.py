@@ -29,4 +29,4 @@ def random_question():
 @app.route('/question_by_group')
 def question_by_group():
     group_name = request.args.get('group')
-    return render_template('question_by_group.html', group_name=group_name)
+    return render_template('question_by_group.html', group_name=group_name, difficulty='Random')
